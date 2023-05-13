@@ -1,0 +1,151 @@
+@mixin respond{
+    @media (max-width: 500px) {@content};
+}
+
+@mixin respond_{
+    @media (max-width: 360px) {@content};
+}
+
+@mixin respond__{
+    @media (max-width: 345px) {@content};
+}
+
+
+body{
+    background-color: hsl(30, 38%, 92%);
+    font-size: 14px;
+}
+
+.container{
+    max-width: 540px;
+    margin: 8%  auto;
+    background-color: white;
+    height: 65vh;
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 45px rgba(black, .3);
+
+    
+    
+    @include respond{
+        flex-direction: column;
+        height: 100vh;
+    }
+}
+
+.box{
+    width: 150%;
+    height: 100%;
+    background-image: url(images/image-product-desktop.jpg);
+    background-size: cover;
+    background-position: center;
+
+    @include respond{
+        height: 50%;
+        width: 100%;
+        background-image: url(images/image-product-mobile.jpg);
+    }
+}
+
+.box2{
+    & > * {
+        margin-left: 9%;
+        margin-right: 9%;
+
+        @include respond{
+            margin: 2%;
+        }
+    } 
+
+    &__descr{
+        color: hsl(228, 12%, 48%);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-family: 'Montserrat', sans-serif;
+        margin-top: 12%;
+        transform: translateY(20%);
+
+        @include respond{
+            margin-top: 7%;
+        }
+    }
+
+    &__heading{
+        font-family: 'Fraunces', sans-serif;
+        margin-right: 20%;
+    }
+
+    &__text{
+        font-family: 'Montserrat', sans-serif;
+        line-height: 20px;
+    }
+
+    &__price-box{
+        display: flex;
+        align-items: center;
+        margin-top: -10%;
+        margin-bottom: 3%;
+
+        @include respond{
+            margin-top: -4%;
+            margin-bottom: 2%;
+        }
+
+        @include respond__{
+            margin-bottom: -2%;
+            margin-top: -4%;
+        }
+
+        &-price1{
+            color: hsl(158, 36%, 37%);
+            font-family: 'Fraunces', sans-serif;
+            margin-right: 50px;
+
+            @include respond__{
+                margin-top: 7%;
+                margin-bottom: 10%;
+            }
+        }
+
+        &-price2{
+            color: hsl(228, 12%, 48%);
+            font-family: 'Montserrat', sans-serif;
+            text-decoration: line-through;
+
+            @include respond__{
+               margin-top: 3%;
+            }
+        }
+    }
+
+    &__cart{
+        margin-left: 7%;
+    }
+    &__cart-box{
+        display: inline-block;
+        background-color: hsl(158, 36%, 37%);
+        width: 70%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Montserrat', sans-serif;
+        color: white;
+        font-weight: 700;
+        border-radius: 5px;
+        margin-top: -19%;
+        transform: translateY(70%);
+
+        @include respond__{
+            height: 12%;
+            margin-top: -23%;
+        }
+        @include respond{
+            margin-top: -12%;
+        }
+
+        &:hover{
+            background-color: darken($color: hsl(158, 36%, 37%), $amount: 10%);
+        }
+    }
+}
